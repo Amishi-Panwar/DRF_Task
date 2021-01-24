@@ -25,22 +25,17 @@ SECRET_KEY = 'rqvwl^=mby(5=&%xqy27!w*@fo+6yug!-h2)vcdcype-l-3w_1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ff5049e9c9ae.ngrok.io','127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','940bf5249c19.ngrok.io']
 
 AUTH_USER_MODEL = 'TaskApp.Client'
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'TaskApp.serializers.ClientSerializer',
 }
-# Application definition
-# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_UNIQUE_EMAIL = True
-# ACCOUNT_USERNAME_REQUIRED = False
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-# ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-# ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/?verification=1'
-# ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  
+    ],
+}
 
 SITE_ID = 1
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
